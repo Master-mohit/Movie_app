@@ -9,12 +9,12 @@ import Loaders from './Loaders'
 
 
 const Trending = () => {
-    const navigation = useNavigate();
-    const [category, setcategory] = useState("all")
-    const [duration, setduration] = useState("day")
-    const [tranding, settranding] = useState([])
-    const [page, setpage] = useState(1)
-    const [hasMore, sethasMore] = useState(true);
+  const navigation = useNavigate();
+  const [category, setcategory] = useState("all")
+  const [duration, setduration] = useState("day")
+  const [tranding, settranding] = useState([])
+  const [page, setpage] = useState(1)
+  const [hasMore, sethasMore] = useState(true);
  
   const GetTranding = async() => {
      try {
