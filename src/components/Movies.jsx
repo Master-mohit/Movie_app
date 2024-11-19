@@ -18,7 +18,7 @@ const Movies = () => {
     const Getmovie = async() => {
         try {
          const {data} = await axios.get(`/movie/${category}?page=${page}`);
-         // settranding(data.results)
+         
    
          if(data.results.length > 0){
            setmovie((prevstate) => [...prevstate, ...data.results])
@@ -55,7 +55,8 @@ const Movies = () => {
      <div className='flex items-center px-[4%]'>
         <h1 className='text-3xl text-zinc-400 font-semibold'>
     <i onClick={()=> navigation(-1)}
-     class="ri-arrow-left-line hover:text-[#6556CD]"></i>Movie<small className='ml-2 text-[20px] text-center'>({category})</small>
+     class="ri-arrow-left-line hover:text-[#6556CD]"></i>
+     Movie<small className='ml-2 text-[20px] text-center'>({category})</small>
         </h1>
 
        <Topnav/>
