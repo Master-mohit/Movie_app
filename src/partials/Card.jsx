@@ -5,7 +5,8 @@ const Card = ({data, title}) => {
   return (
     <div className=' w-full h-full p-[5%] flex flex-wrap  bg-[#1F1E24]'>
       {data.map((c, i) => 
-      <Link className='w-[25vh] mr-[3%] mb-[5%]' key={i}>
+      <Link to=
+      {`/${c.media_type || title}/details/${c.id}`} className='w-[25vh] mr-[3%] mb-[5%]' key={i}>
      
    <img className='shadow-[8px_17px_39px_2px_rgba(0,0,0,.5)] h-[40vh]'
     src={`https://image.tmdb.org/t/p/original/${c.poster_path || c.backdrop_path || c.profile_path}`} alt=''/>

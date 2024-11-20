@@ -6,6 +6,7 @@ import Dropdown from '../partials/Dropdown';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Card from '../partials/Card';
 import Topnav from '../partials/Topnav';
+import Moviedetails from './Moviedetails';
 
 const Movies = () => {
 
@@ -56,7 +57,7 @@ const Movies = () => {
         <h1 className='text-3xl text-zinc-400 font-semibold'>
     <i onClick={()=> navigation(-1)}
      class="ri-arrow-left-line hover:text-[#6556CD]"></i>
-     Movie<small className='ml-2 text-[20px] text-center'>({category})</small>
+     Movie
         </h1>
 
        <Topnav/>
@@ -71,7 +72,7 @@ const Movies = () => {
     hasMore = {hasMore}
     loader = {<h1>Loading...</h1>}
     >
-  <Card data ={movie} title={category}/>
+  <Card data ={movie} title="movie"/>
 
   </InfiniteScroll>
     
