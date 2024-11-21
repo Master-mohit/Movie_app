@@ -5,22 +5,27 @@ import { loadmovie } from "../reducer/movieSlice";
 
 export const asyncloadmovie = (id) => async(dispatch, getstate) => {
     try {
-        const detail= await axios.get(`/movie/${id}`);
+        const detail = await axios.get(`/movie/${id}`);
         const externalid= await axios.get(`/movie/${id}/external_ids`);
-        const recomendations= await axios.get(`/movie/${id}/recomendations`);
+        const recommendations= await axios.get(`/movie/${id}/recommendations`);
         const similar= await axios.get(`/movie/${id}/similar`);
+        const translations= await axios.get(`/movie/${id}/translations`);
         const videos= await axios.get(`/movie/${id}/videos`);
-        const watchprovider= await axios.get(`/movie/${id}/watch/providers`);
+        const watchproviders= await axios.get(`/movie/${id}/watch/providers`);
         let theultimatedetails = {
             detail: detail.data,
             externalid: externalid.data,
-            recomendations: recomendations.data.results,
+            recommendations: recommendations.data.results,
             similar: similar.data.results,
+            translations: translations.data.translations.map((t) => t.english_name),
             videos: videos.data.results.find(m => m.type === "Trailer"),
-            watchprovider: watchprovider.data,
+            watchproviders: watchproviders.data.results.NL,
+            watchproviders: watchproviders.data.results.IN,
         }
-        dispatch(loadmovie(theultimatedetails));
         console.log(theultimatedetails);
+        
+        dispatch(loadmovie(theultimatedetails));
+       
 
     } catch (error) {
         console.log("Error", error);
