@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncloadmovie, removemovie } from '../store/actions/movieAction';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Loaders from "../components/Loaders";
 import HorizotalCards from "../partials/HorizotalCards";
 
@@ -18,7 +18,7 @@ const Moviedetails = () => {
     return () => {
       dispatch(removemovie());
     };
-  }, [dispatch, id]);
+  }, [id]);
 
   return info ? (
     <div
@@ -161,7 +161,7 @@ const Moviedetails = () => {
        { <HorizotalCards data={
         info.recommendations.length > 0 ? info.recommendations : info.similar
        } />}
-      
+      <Outlet />
 
     </div>
   ) : (
