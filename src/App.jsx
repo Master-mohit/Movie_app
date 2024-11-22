@@ -21,11 +21,14 @@ const App = () => {
         <Route path='/movie' element={<Movies />} />
         <Route path='/movie/details/:id' element={<Moviedetails />}>
         <Route 
-             path='/movie/details/:id/trailer' element={<Trailer/>}/>
+        path='/movie/details/:id/trailer' element={<Trailer/>}/>
         </Route>
       
-        <Route path='/tv' element={<Tv />} />
-        <Route path='/tv/details/:id' element={<Tvdetails />} />
+        <Route path='/tv' element={<Tv />}/>
+        <Route path='/tv/details/:id' element={<Tvdetails />}>
+        <Route 
+        path='/tv/details/:id/trailer' element={<Trailer/>}/>
+        </Route>
         <Route path='/people' element={<People />} />
         <Route path='/people/details/:id' element={<Peopledetails />} />
       </Routes>
