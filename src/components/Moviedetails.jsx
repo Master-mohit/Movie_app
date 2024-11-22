@@ -10,7 +10,7 @@ const Moviedetails = () => {
   const navigation = useNavigate();
   const { id } = useParams();
   const { info } = useSelector((state) => state.movie);
-  console.log(info);
+
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -30,7 +30,7 @@ const Moviedetails = () => {
         overflow: "hidden",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen h-screen px-[10%]"
+      className="w-screen h-[140vh] px-[10%]"
     >
       <nav className="h-[10vh] w-full text-zinc-100 flex items-center gap-10 text-xl">
         <Link
@@ -110,7 +110,7 @@ const Moviedetails = () => {
 
       </div>
 
-      <div className="w-[80%] mt-5 ">
+      <div className="w-[80%] mt-5 mb-6 ">
 
         {info.watchproviders && info.watchproviders.flatrate && (
             <div className="flex gap-x-10 items-center text-white">
@@ -153,8 +153,15 @@ const Moviedetails = () => {
         
       </div>
        
-       <HorizotalCards />
-        {info.recommendations ? info.recommendations : info.similar}
+       <hr className='mt-10 mb-4 border-none h-[1px] bg-zinc-500'/>
+       <h1 className='text-3xl font-bold text-white mb-4'>
+        Recommendations and Similar stuff
+       </h1>
+
+       { <HorizotalCards data={
+        info.recommendations.length > 0 ? info.recommendations : info.similar
+       } />}
+      
 
     </div>
   ) : (
