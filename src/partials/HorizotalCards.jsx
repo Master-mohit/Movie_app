@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Dropdown from './Dropdown'
+import noimage from '/no-image-available.png'
 
 const HorizotalCards = ({data}) => {
   return (
@@ -11,7 +12,12 @@ const HorizotalCards = ({data}) => {
 
         <img 
             className='w-full object-cover h-[55%] ' 
-                src={`https://image.tmdb.org/t/p/original/${d.backdrop_path || d.poster_path}`} alt=''/>
+                src={d.backdrop_path || d.poster_path ?
+                  `https://image.tmdb.org/t/p/original/${
+                    d.backdrop_path || d.poster_path
+                  }`:noimage
+                    } 
+                    alt=''/>
      
      <div className=' text-white h-[60%] p-1'>
      <h1 className=' text-xl font-semibold '>
