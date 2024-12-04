@@ -11,7 +11,7 @@ const Peopledetails = () => {
   const navigation = useNavigate();
   const { id } = useParams();
   const { info } = useSelector((state) => state.people);
-  const [category, setCategory] = useState("Movie");
+  const [category, setcategory] = useState("movie");
 
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ const Peopledetails = () => {
   const credits = info?.combinedcredits; // Safely access combinedcredits
 
   return info ? (
-    <div className='px-[10%] w-screen h-[150vh] bg-[#1f1e24]'>
+    <div className='px-[10%] w-screen h-[200vh] bg-[#1f1e24]'>
       {/* Navbar */}
       <nav className="h-[10vh] w-full text-zinc-100 flex items-center gap-10 text-xl">
         <Link
@@ -112,30 +112,31 @@ const Peopledetails = () => {
           <h1 className='text-xl text-zinc-400 font-semibold'>Biography</h1>
           <p className='text-zinc-400 mt-3'>{info.detail.biography}</p>
 
-          <h1 className='text-lg text-zinc-400 font-semibold'>Summary</h1>
-          <HorizotalCards data={credits?.cast} />
+          <h1 className='text-2xl mt-6 mb-6 text-zinc-400 font-semibold'>Summary</h1>
+          <HorizotalCards data={info. combinedcredits.cast}/>
 
           <div className='w-full flex justify-between'>
-            <h1 className='text-xl text-zinc-400 font-semibold'>Acting</h1>
+            <h1 className='text-2xl mt-7 text-zinc-400 font-semibold'>Acting</h1>
             <Dropdown
-              title="Category"
-              option={["Tv", "Movie"]}
-              fun={(e) => setCategory(e.target.value)}
-            />
+               title="Category"
+               option={["tv", "movie"]}
+                fun={(e) => setcategory(e.target.value)}
+/>
+
           </div>
 
           <div className='list-disc text-zinc-400 w-full h-[50vh] overflow-x-hidden overflow-y-auto border-2 border-zinc-700 shadow-xl shadow-[rgba(255,255,255,.3)] mt-5'>
             {credits?.cast?.length > 0 ? (
               credits.cast.map((c, i) => (
-                <li key={i} className='hover:text-white duration-300 cursor-pointer'>
-                  <Link>
+                <li key={i} className='hover:text-white hover:bg-[#19191d] duration-300 cursor-pointer p-5 rounded'>
+                  <Link to={`/${category}/details/${c.id}`}>
                     <span>
                       {c.name ||
                         c.title ||
                         c.original_title ||
                         c.original_name}
                     </span>
-                    <span className='block'>Character Name</span>
+                    <span className='block ml-5'>{c.character && `Character name: ${c.character}`}</span>
                   </Link>
                 </li>
               ))
