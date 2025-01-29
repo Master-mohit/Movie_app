@@ -20,7 +20,7 @@ export const asyncloadmovie = (id) => async(dispatch, getstate) => {
             translations: translations.data.translations.map((t) => t.english_name),
             videos: videos.data.results.find(m => m.type === "Trailer"),
             watchproviders: watchproviders.data.results.NL,
-            watchproviders: watchproviders.data.results.IN,
+          
         }
         console.log(theultimatedetails);
         
